@@ -2,12 +2,7 @@ import contextlib
 import logging
 
 from sqlalchemy.exc import SQLAlchemyError
-from sqlalchemy.ext.asyncio import (
-    AsyncEngine,
-    async_sessionmaker,
-    create_async_engine,
-)
-
+from sqlalchemy.ext.asyncio import AsyncEngine, async_sessionmaker, create_async_engine
 from src.conf.config import settings
 
 logger = logging.getLogger("uvicorn.error")

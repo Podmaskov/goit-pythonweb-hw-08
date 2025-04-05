@@ -1,17 +1,20 @@
-from datetime import datetime
+from datetime import date
 
-from sqlalchemy import Date, Integer, String
-from sqlalchemy.orm import mapped_column, Mapped, DeclarativeBase
+from sqlalchemy import String, Date
+from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy.orm import Mapped, mapped_column
+
 
 class Base(DeclarativeBase):
     pass
 
+
 class Contact(Base):
     __tablename__ = "contacts"
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True)
     first_name: Mapped[str] = mapped_column(String(100), nullable=False)
     last_name: Mapped[str] = mapped_column(String(100), nullable=False)
-    email: Mapped[str] = mapped_column(String(100), nullable=False, unique=True)
-    phone: Mapped[str] = mapped_column(String(20), nullable=False, unique=True)
-    birthdate: Mapped[datetime.date] = mapped_column(Date, nullable=False)
-    aditional_data: Mapped[str] = mapped_column(String(500), nullable=True)
+    email: Mapped[str] = mapped_column(String(100), nullable=False)
+    phone: Mapped[str] = mapped_column(String(30), nullable=False)
+    birthday: Mapped[date] = mapped_column(Date, nullable=False)
+    extra_info: Mapped[str] = mapped_column(String(255))
